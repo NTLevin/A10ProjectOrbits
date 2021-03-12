@@ -5,6 +5,10 @@ x1 = A(:,2);
 y1 = A(:,3);
 z1 = A(:,4);
 figure;plot3(x1,y1,z1,'.-');
+xlabel('x(km)')
+ylabel('y(km)')
+zlabel('z(km)')
+title ('Orbit influenced by atomospheric drag')
 axis equal
 hold on
 
@@ -20,6 +24,10 @@ x2 = B(:,2);
 y2 = B(:,3);
 z2 = B(:,4);
 figure;plot3(x2,y2,z2,'.-');
+xlabel('x(km)')
+ylabel('y(km)')
+zlabel('z(km)')
+title ('Orbit influenced by J2 pertubations')
 axis equal
 hold on 
 
@@ -35,6 +43,10 @@ x3 = C(:,2);
 y3 = C(:,3);
 z3 = C(:,4);
 figure;plot3(x3,y3,z3,'.-');
+xlabel('x(km)')
+ylabel('y(km)')
+zlabel('z(km)')
+title ('Molniya orbit representation')
 axis equal
 hold on 
 
