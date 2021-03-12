@@ -111,9 +111,6 @@ end
 
 a = h.^2./mu./(1-e.^2);
 
-disp(a)
-disp(e)
-disp(incl)
-disp(RAAN)
-disp(w)
-disp(TA)
+coe = [a e incl RAAN w TA]
+disp(coe)
+
