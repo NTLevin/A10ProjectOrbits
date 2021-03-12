@@ -59,5 +59,10 @@ h = norm(H);
 
 incl = acos(H(3)/h);
 
+N = cross([0 0 1],H);
+n = norm(N);
+
+if n
+
 
 
