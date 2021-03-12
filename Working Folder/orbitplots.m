@@ -104,6 +104,7 @@ else
         TA = 2.*pi - acos(dot(N,R)./n./r);
     end
 end
+TA = TA.*180./pi
 
 a = h.^2./mu./(1-e.^2);
 
