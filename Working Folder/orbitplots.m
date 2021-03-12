@@ -89,7 +89,7 @@ if n ~= 0
 else 
     w = 0;
 end 
-w = w.*180./pi
+w = w.*180./pi;
 
 if e > eps
     TA = acos(dot(E,R)./e./r);
@@ -104,7 +104,7 @@ else
         TA = 2.*pi - acos(dot(N,R)./n./r);
     end
 end
-TA = TA.*180./pi
+TA = TA.*180./pi;
 
 a = h.^2./mu./(1-e.^2);
 
