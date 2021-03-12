@@ -1,4 +1,4 @@
-A = PositionVelocity;
+A = Moniya; %name of input table
 %---------------------
 B = table2array(A);
 size = height(B);
@@ -16,28 +16,123 @@ vy = A(1:size,6);
 Vy = table2array(vy)';
 vz = A(1:size,7);
 Vz = table2array(vz)';
-%CORRECT-------------
+
+%Coordinate System - Correct
+
 absr = sqrt(X.^2 + Y.^2 + Z.^2)';
 absv = sqrt(Vx.^2 + Vy.^2 + Vz.^2)';
 r = A(1:size,2:4);
 r = table2array(r)';
 v = A(1:size,5:7);
 v = table2array(v)';
-h = cross(r(:,1),v(:,1));
+mu = 398600;
+
+%H - Correct
+h = cross(r(:,1),v(:,1))';
 for i =2:size
-    htemp = cross(r(:,i),v(:,i));
+    htemp = cross(r(:,i),v(:,i))';
     h = [h;htemp];
 end
-hsub = sqrt(dot(h,h));
+
+
+absh = sqrt(dot(h(1,:),h(1,:)));
+for i = 2:size
+    hsubtemp = sqrt(dot(h(i,:),h(i,:)));
+    absh = [absh;hsubtemp];
+end
 K = [0 0 1]';
-%N = cross(h,repmat(K,1,size(h,2))); %wrong as h is wrong
-mu = 398600;
+
+%N - Correct
+N = cross(K,h(1,:));
+for i = 2:size
+    Ntemp = cross(K,h(1,:));
+    N = [N;Ntemp];
+end
+abs_N = sqrt(dot(N(1,:),N(1,:)));
+for i = 2:size
+    Nabstemp = sqrt(dot(N(i,:),N(i,:)));
+    abs_N= [abs_N;Nabstemp];
+end
+
 E =(absv.^2)/2 - mu * absr.^-1;
-%a
+
+%a - correct
 a = -0.5*mu*E.^-1;
-%e
-e1 = hsub.^2/mu^2;
-e2 = absv.^2 - 2 * mu * absr.^-1;
-e1 = diag(e1);
-e3 = e1*e2;
-e4 = 1+e3;
+
+%e - correct
+e1 = r(:,1).*(absv(1,1)^2-mu/absr(1,:))';
+e2 = v(:,1).*dot(r(:,1),v(:,1))';
+e = e1/mu - e2/mu;
+e = e';
+for i=2:size
+   e1temp = r(:,i).*(absv(i,1)^2-mu/absr(i,1))';
+   e2temp = v(:,i).*dot(r(:,i),v(:,i))';
+   etemp = e1temp/mu - e2temp/mu;
+   e = [e;etemp'];
+end
+abse = sqrt(dot(e(1,:),(e(1,:))));
+for i=2:size
+   absetemp =  sqrt(dot(e(i,:),(e(i,:))));
+   abse = [abse;absetemp];
+end
+
+%i - correct
+inc = acosd(h(1,3)/absh(1,1));
+for i = 2:size
+    itemp = acosd(h(i,3)/absh(i,1));
+    inc= [inc;itemp];
+end
+
+%RAAN - correct
+RAAN = acosd(N(1,1)/abs_N(1,1));
+if N(1,2)<0
+    RAAN = 360 - RAAN;
+end
+for i = 2:size
+    RAANtemp = acosd(N(i,1)/abs_N(i,1));
+    if N(i,2)<0
+        RAANtemp  = 360 - RAANtemp;
+    end
+    RAAN = [RAAN;RAANtemp];
+end
+
+%ArgPerigee - correct
+ArgPer1 = dot(N(1,:),e(1,:));
+ArgPer2 = ArgPer1/abs_N(1,1)/abse(1,1);
+ArgPer = acosd(ArgPer2);
+if e(1,3) < 0
+    ArgPer = 360 - ArgPer;
+end
+for i = 2:size
+    ArgPer1temp = dot(N(i,:),e(i,:));
+    ArgPer2temp = ArgPer1temp/abs_N(i,1)/abse(i,1);
+    ArgPertemp = acosd(ArgPer2temp);
+    if e(i,3) < 0
+        ArgPertemp = 360 - ArgPertemp;
+    end
+    ArgPer = [ArgPer; ArgPertemp];
+end
+
+%TrueAnom
+TrueAnom1 = dot(e(1,:),r(:,1)');
+TrueAnom2 = TrueAnom1/absr(1,1)/abse(1,1);
+TrueAnom = acosd(TrueAnom2);
+if dot(e(1,:),r(:,1)') <0 
+    TrueAnom = 360 - TrueAnom;
+end
+for i=2:size
+    TrueAnom1temp = dot(e(i,:),r(:,i)');
+    TrueAnom2temp = TrueAnom1temp/absr(i,1)/abse(i,1);
+    TrueAnomtemp = acosd(TrueAnom2temp);
+    if dot(e(i,:),r(:,i)')<0
+        TrueAnomtemp = 360 - TrueAnomtemp;
+    end
+    TrueAnom = [TrueAnom;TrueAnomtemp];
+end
+
+%time; a; abse; inc; RAAN; ArgPer; TrueAnom; 
+
+clear A abs_N asbetemp absh absr absv ArgPer1 ArgPer1temp ArgPer2 ArgPer2temp ArgPertemp B e E 
+clear e1temp absetemp e2 e2temp etemp h hsubtemp htemp i itemp K mu N Nabstemp Ntemp e1
+clear Ntemp r RAANtemp size t TrueAnom1 TrueAnom1temp TrueAnom2 TrueAnom2temp TrueAnomtemp
+clear v vx Vx vy Vy vz Vz x X y Y z Z
