@@ -45,31 +45,67 @@ Z = Z*Earth_radius;
 surf(X,Y,Z,'FaceColor','b', 'FaceAlpha',0.2, 'EdgeColor','none');
 hold on
 
-global mu;
+mu = 398600;
 eps = 1.e-10;
 
+R = [-2157.462049 2197.773282 -6150.115340];
+V = [-7.167979 -7.036505 -0.000000];
 
 r = norm(R);
-v = norm;
+v = norm(V);
 
-vr = dot(R,V)/r;
+vr = dot(R,V)./r;
 
 H = cross(R,V);
 h = norm(H);
 
-incl = acos(H(3)/h);
+incl = acos(H(3)./h).*180./pi;
 
 N = cross([0 0 1],H);
 n = norm(N);
 
 if n ~= 0
-    RA = acos(N(1)/n);
+    RAAN = acos(N(1)./n);
     if N(2) < 0
-        RA = 2*pi - RA;
+        RAAN = 2.*pi - RAAN;
     end
 else 
-    RA = 0;
+    RAAN = 0;
+end
+RAAN = RAAN.*180./pi;
+
+k = 1/mu*(v^2-mu/r)
+
+E = 2 * R;
+e = norm(E);
+
+if n ~= 0
+    if e > eps
+        w = acos(dot(N,E)./n./e);
+        if E(3) < 0
+            w = 2.*pi - w;
+        end
+    else 
+        w = 0;
+    end
+else 
+    w = 0;
+end 
+
+if e > eps
+    TA = acos(dot(E,R)./e./r);
+    if vr < 0
+        TA = 2.*pi - TA;
+    end
+else 
+    cp = cross(N,R);
+    if cp(3) >= 0
+        TA = acos(dot(N,R)./n./r);
+    else
+        TA = 2.*pi - acos(dot(N,R)./n./r);
+    end
 end
 
+a = h.^2./mu./(1-e.^2);
 
-
+coe = [h e RAAN incl w TA a];
