@@ -62,7 +62,14 @@ incl = acos(H(3)/h);
 N = cross([0 0 1],H);
 n = norm(N);
 
-if n
+if n ~= 0
+    RA = acos(N(1)/n);
+    if N(2) < 0
+        RA = 2*pi - RA;
+    end
+else 
+    RA = 0;
+end
 
 
 
