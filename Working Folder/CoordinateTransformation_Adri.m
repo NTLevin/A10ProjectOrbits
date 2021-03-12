@@ -131,8 +131,18 @@ for i=2:size
 end
 
 %time; a; abse; inc; RAAN; ArgPer; TrueAnom; 
+Time = array2table(time);
+Semi_Major_Axis = array2table(a);
+Eccentricity = array2table(abse);
+Inclination = array2table(inc);
+RAAN = array2table(RAAN);
+Arg_of_Perigee = array2table(ArgPer);
+True_Anomaly = array2table(TrueAnom);
+FinalTemp = [Time Semi_Major_Axis Eccentricity Inclination RAAN Arg_of_Perigee True_Anomaly];
 
 clear A abs_N asbetemp absh absr absv ArgPer1 ArgPer1temp ArgPer2 ArgPer2temp ArgPertemp B e E 
 clear e1temp absetemp e2 e2temp etemp h hsubtemp htemp i itemp K mu N Nabstemp Ntemp e1
 clear Ntemp r RAANtemp size t TrueAnom1 TrueAnom1temp TrueAnom2 TrueAnom2temp TrueAnomtemp
 clear v vx Vx vy Vy vz Vz x X y Y z Z
+clear time a abse inc RAAN ArgPer TrueAnom 
+clear Time Semi_Major_Axis Eccentricity Inclination RAAN Arg_of_Perigee True_Anomaly
