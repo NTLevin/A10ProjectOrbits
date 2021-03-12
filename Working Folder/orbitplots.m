@@ -74,9 +74,7 @@ else
 end
 RAAN = RAAN.*180./pi;
 
-k = 1/mu*(v^2-mu/r)
-
-E = 2 * R;
+E = 1/mu*((v^2-mu/r)* R - r*vr*V);
 e = norm(E);
 
 if n ~= 0
@@ -91,6 +89,7 @@ if n ~= 0
 else 
     w = 0;
 end 
+w = w.*180./pi
 
 if e > eps
     TA = acos(dot(E,R)./e./r);
@@ -108,4 +107,9 @@ end
 
 a = h.^2./mu./(1-e.^2);
 
-coe = [h e RAAN incl w TA a];
+disp(a)
+disp(e)
+disp(incl)
+disp(RAAN)
+disp(w)
+disp(TA)
