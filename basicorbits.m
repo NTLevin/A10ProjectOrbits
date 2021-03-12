@@ -22,7 +22,7 @@ vx = A(1:rowLength,5:5)';
 vy = A(1:rowLength,6:6)';
 vz = A(1:rowLength,7:7)';
 
-v = sqrt(A(1:1441,5:5).^2+A(1:1441,6:6).^2+A(1:1441,7:7).^2);
+v = sqrt(A(1:rowLength,5:5).^2+A(1:rowLength,6:6).^2+A(1:rowLength,7:7).^2);
 
 
 inclination = atan(-1*z/sqrt(x.^2+y.^2));
