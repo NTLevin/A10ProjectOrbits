@@ -1,4 +1,4 @@
-A = Moniya; %name of input table
+A = Airpertub; %name of input table
 %---------------------
 B = table2array(A);
 size = height(B);
@@ -138,41 +138,49 @@ Inclination = array2table(inc);
 RAAN = array2table(RAAN);
 Arg_of_Perigee = array2table(ArgPer);
 True_Anomaly = array2table(TrueAnom);
-FinalTemp = [Time Semi_Major_Axis Eccentricity Inclination RAAN Arg_of_Perigee True_Anomaly];
+FinalTemp = [Time Semi_Major_Axis Eccentricity Inclination RAAN Arg_of_Perigee True_Anomaly]
 
-E1 = table2array(FinalTemp(:,2));
+SM1 = table2array(FinalTemp(:,2));
 t1 = table2array((FinalTemp(:,1)));
 figure(1)
-plot(E1,t1,'red','linewidth',2 )
+plot(t1,SM1,'red','linewidth',2 )
+xlabel('Time (s)');
+ylabel('Semi-Major Axis');
+title ('Semi-Major Axis vs Time, Drag Perturbation')
+
+E1 = table2array(FinalTemp(:,3));
+t1 = table2array((FinalTemp(:,1)));
+figure(1)
+plot(t1,E1,'red','linewidth',2 )
 xlabel('Time (s)');
 ylabel('Eccentricity');
-title ('Eccentricity vs Time, Molniya Orbit')
+title ('Eccentricity vs Time, Drag Perturbation')
 
-i = table2array(FinalTemp(:,3));
+i = table2array(FinalTemp(:,4));
 figure(2)
-plot(i,t1,'red','linewidth',2 )
+plot(t1,i,'red','linewidth',2 )
 xlabel('Time (s)');
 ylabel('Inclination');
-title ('Inclination vs Time, Molniya Orbit')
+title ('Inclination vs Time, Drag Perturbation')
 
-RightAscension = table2array(FinalTemp(:,4));
+RightAscension = table2array(FinalTemp(:,5));
 figure(3)
-plot(RightAscension,t1,'red','linewidth',2 )
+plot(t1,RightAscension,'red','linewidth',2 )
 xlabel('Time (s)');
 ylabel('RAAN');
-title ('Right Ascension of Ascending Node (RAAN) vs Time, Molniya Orbit')
+title ('Right Ascension of Ascending Node (RAAN) vs Time, Drag Perturbation')
 
-ArgPerigree = table2array(FinalTemp(:,5));
+ArgPerigree = table2array(FinalTemp(:,6));
 figure(4)
-plot(ArgPerigree,t1,'red','linewidth',2 )
+plot(t1,ArgPerigree,'red','linewidth',2 )
 xlabel('Time (s)');
 ylabel('Argument of Perigree');
-title ('Argument of Perigee vs Time, Molniya Orbit')
+title ('Argument of Perigee vs Time, Drag Perturbation')
 
-TrueAnomaly = table2array(FinalTemp(:,6));
+TrueAnomaly = table2array(FinalTemp(:,7));
 figure(5)
-plot(TrueAnomaly,t1,'red','linewidth',2 )
+plot(t1,TrueAnomaly,'red','linewidth',2 )
 xlabel('Time (s)');
 ylabel('True Anomaly');
-title ('True Anomaly vs Time, Molniya Orbit')
+title ('True Anomaly vs Time, Drag Perturbation')
 
