@@ -139,3 +139,40 @@ RAAN = array2table(RAAN);
 Arg_of_Perigee = array2table(ArgPer);
 True_Anomaly = array2table(TrueAnom);
 FinalTemp = [Time Semi_Major_Axis Eccentricity Inclination RAAN Arg_of_Perigee True_Anomaly];
+
+E1 = table2array(FinalTemp(:,2));
+t1 = table2array((FinalTemp(:,1)));
+figure(1)
+plot(E1,t1,'red','linewidth',2 )
+xlabel('Time (s)');
+ylabel('Eccentricity');
+title ('Eccentricity vs Time, Molniya Orbit')
+
+i = table2array(FinalTemp(:,3));
+figure(2)
+plot(i,t1,'red','linewidth',2 )
+xlabel('Time (s)');
+ylabel('Inclination');
+title ('Inclination vs Time, Molniya Orbit')
+
+RightAscension = table2array(FinalTemp(:,4));
+figure(3)
+plot(RightAscension,t1,'red','linewidth',2 )
+xlabel('Time (s)');
+ylabel('RAAN');
+title ('Right Ascension of Ascending Node (RAAN) vs Time, Molniya Orbit')
+
+ArgPerigree = table2array(FinalTemp(:,5));
+figure(4)
+plot(ArgPerigree,t1,'red','linewidth',2 )
+xlabel('Time (s)');
+ylabel('Argument of Perigree');
+title ('Argument of Perigee vs Time, Molniya Orbit')
+
+TrueAnomaly = table2array(FinalTemp(:,6));
+figure(5)
+plot(TrueAnomaly,t1,'red','linewidth',2 )
+xlabel('Time (s)');
+ylabel('True Anomaly');
+title ('True Anomaly vs Time, Molniya Orbit')
+
