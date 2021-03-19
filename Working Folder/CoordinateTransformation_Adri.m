@@ -191,6 +191,7 @@ title (strcat('Argument of Perigee vs Time, ' , titleText))
 TrueAnomaly = table2array(FinalTemp(:,7));
 figure(5)
 plot(t1,TrueAnomaly,'red','linewidth',2 )
+ylim([0,360]);
 xlabel('Time (s)');
 ylabel('True Anomaly');
 title (strcat('True Anomaly vs Time, ' , titleText))
