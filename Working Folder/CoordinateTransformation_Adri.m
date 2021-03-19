@@ -45,7 +45,7 @@ K = [0 0 1]';
 %N 
 N = cross(K,h(1,:));
 for i = 2:size
-    Ntemp = cross(K,h(1,:));
+    Ntemp = cross(K,h(i,:));
     N = [N;Ntemp];
 end
 abs_N = sqrt(dot(N(1,:),N(1,:)));
