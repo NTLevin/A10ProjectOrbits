@@ -117,14 +117,14 @@ end
 TrueAnom1 = dot(e(1,:),r(:,1)');
 TrueAnom2 = TrueAnom1/absr(1,1)/abse(1,1);
 TrueAnom = acosd(TrueAnom2);
-if dot(e(1,:),r(:,1)') <0 
+if dot(r(:,1)',v(:,1)) <0 
     TrueAnom = 360 - TrueAnom;
 end
 for i=2:size
     TrueAnom1temp = dot(e(i,:),r(:,i)');
     TrueAnom2temp = TrueAnom1temp/absr(i,1)/abse(i,1);
     TrueAnomtemp = acosd(TrueAnom2temp);
-    if dot(e(i,:),r(:,i)')<0
+    if dot(r(:,i)',v(:,i))<0
         TrueAnomtemp = 360 - TrueAnomtemp;
     end
     TrueAnom = [TrueAnom;TrueAnomtemp];
