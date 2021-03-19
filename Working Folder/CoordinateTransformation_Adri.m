@@ -139,3 +139,10 @@ RAAN = array2table(RAAN);
 Arg_of_Perigee = array2table(ArgPer);
 True_Anomaly = array2table(TrueAnom);
 FinalTemp = [Time Semi_Major_Axis Eccentricity Inclination RAAN Arg_of_Perigee True_Anomaly];
+
+clear A asbetemp absh absr absv ArgPer1 ArgPer1temp ArgPer2 ArgPer2temp ArgPertemp B e E 
+clear e1temp absetemp e2 e2temp etemp hsubtemp htemp i itemp K mu e1
+clear r RAANtemp size t TrueAnom1 TrueAnom1temp TrueAnom2 TrueAnom2temp TrueAnomtemp
+clear v vx Vx vy Vy vz Vz x X y Y z Z trueanom argper
+clear time a abse inc RAAN ArgPer TrueAnom abs_N h N Nabstemp Ntemp
+clear Time Semi_Major_Axis Eccentricity Inclination RAAN Arg_of_Perigee True_Anomaly
