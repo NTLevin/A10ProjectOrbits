@@ -1,4 +1,11 @@
 A = Moniya; %name of input table
+
+titleText = ' Molniya Orbit';
+% titleText = ' J2 Perturbation';
+% titleText = ' Drag Perturbation';
+% Uncomment correct title
+    
+titleText
 %---------------------
 B = table2array(A);
 size = height(B);

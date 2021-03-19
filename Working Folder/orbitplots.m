@@ -8,7 +8,7 @@ figure;plot3(x1,y1,z1,'.-');
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('z (km)')
-title ('Orbit influenced by atomospheric drag')
+title ('Orbit influenced by atmospheric drag')
 axis equal
 hold on
 
