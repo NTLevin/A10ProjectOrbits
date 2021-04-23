@@ -35,3 +35,9 @@ x_n1_n1 = x_n1_n + K_n1*(data(:,(n))-x_n1_n);
 P_n1_n1 = (eye(3)- K_n1)*P_n1_n*rot90(eye(3)-K_n1)+K_n1*R*rot90(K_n1);
 datacorrected = [datacorrected x_n1_n1];
 end
+
+timestep = 2*pi*sqrt((6378+500)^3/398600)/3600;
+time = [];
+for j = 1:n
+time = [time timestep*j];
+end
