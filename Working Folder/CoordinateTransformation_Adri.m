@@ -157,47 +157,49 @@ clear Time Semi_Major_Axis Eccentricity Inclination RAAN Arg_of_Perigee True_Ano
 
 SM1 = table2array(FinalTemp(:,2));
 t1 = table2array((FinalTemp(:,1)));
-figure(6)
+figure(1)
+ylim([0,30000])
 plot(t1,SM1,'red','linewidth',2 )
 xlabel('Time (min)');
-ylabel('Semi-Major Axis (km)');
+ylabel('Semi-Major Axis');
 title (strcat('Semi-Major Axis vs Time,',titleText));
 
 E1 = table2array(FinalTemp(:,3));
 t1 = table2array((FinalTemp(:,1)));
-figure(1)
-plot(t1,E1,'red','linewidth',2 )
+figure(2)
 ylim([0,1]);
+plot(t1,E1,'red','linewidth',2 )
 xlabel('Time (min)');
 ylabel('Eccentricity');
 title (strcat('Eccentricity vs Time, ' , titleText))
 
 i = table2array(FinalTemp(:,4));
-figure(2)
-plot(t1,i,'red','linewidth',2 )
+figure(3)
 ylim([0,180]);
+plot(t1,i,'red','linewidth',2 )
 xlabel('Time (min)');
-ylabel('Inclination (deg)');
+ylabel('Inclination');
 title (strcat('Inclination vs Time, ' , titleText))
 
 RightAscension = table2array(FinalTemp(:,5));
-figure(3)
+figure(4)
+ylim([0,360]);
 plot(t1,RightAscension,'red','linewidth',2 )
 xlabel('Time (min)');
-ylabel('RAAN (deg)');
-ylim([0,360]);
+ylabel('RAAN');
+
 title (strcat('Right Ascension of Ascending Node (RAAN) vs Time, ' , titleText))
 
-ArgPerigee = table2array(FinalTemp(:,6));
-figure(4)
-plot(t1,ArgPerigee,'red','linewidth',2 )
+ArgPerigree = table2array(FinalTemp(:,6));
+figure(5)
+plot(t1,ArgPerigree,'red','linewidth',2 )
 ylim([0,360]);
 xlabel('Time (min)');
-ylabel('Argument of Perigree (deg)');
+ylabel('Argument of Perigree');
 title (strcat('Argument of Perigee vs Time, ' , titleText))
 
 TrueAnomaly = table2array(FinalTemp(:,7));
-figure(5)
+figure(6)
 plot(t1,TrueAnomaly,'red','linewidth',2 )
 ylim([0,360]); 
 xlabel('Time (min)');
