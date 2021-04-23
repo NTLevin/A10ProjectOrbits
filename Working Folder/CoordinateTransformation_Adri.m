@@ -1,8 +1,8 @@
-A = Moniya; %name of input table
+A = J2pertub; %name of input table
 
-titleText = ' Molniya Orbit';
-% titleText = ' J2 Perturbation';
-% titleText = ' Drag Perturbation';
+% titleText = ' Molniya Orbit';
+titleText = ' J2 Perturbation';
+% titleText = 'Drag Perturbation';
 % Uncomment correct title
     
 
@@ -157,10 +157,10 @@ clear Time Semi_Major_Axis Eccentricity Inclination RAAN Arg_of_Perigee True_Ano
 
 SM1 = table2array(FinalTemp(:,2));
 t1 = table2array((FinalTemp(:,1)));
-figure(1)
+figure(6)
 plot(t1,SM1,'red','linewidth',2 )
-xlabel('Time (s)');
-ylabel('Semi-Major Axis');
+xlabel('Time (min)');
+ylabel('Semi-Major Axis (km)');
 title (strcat('Semi-Major Axis vs Time,',titleText));
 
 E1 = table2array(FinalTemp(:,3));
@@ -168,7 +168,7 @@ t1 = table2array((FinalTemp(:,1)));
 figure(1)
 plot(t1,E1,'red','linewidth',2 )
 ylim([0,1]);
-xlabel('Time (s)');
+xlabel('Time (min)');
 ylabel('Eccentricity');
 title (strcat('Eccentricity vs Time, ' , titleText))
 
@@ -176,31 +176,31 @@ i = table2array(FinalTemp(:,4));
 figure(2)
 plot(t1,i,'red','linewidth',2 )
 ylim([0,180]);
-xlabel('Time (s)');
-ylabel('Inclination');
+xlabel('Time (min)');
+ylabel('Inclination (deg)');
 title (strcat('Inclination vs Time, ' , titleText))
 
 RightAscension = table2array(FinalTemp(:,5));
 figure(3)
 plot(t1,RightAscension,'red','linewidth',2 )
-xlabel('Time (s)');
-ylabel('RAAN');
+xlabel('Time (min)');
+ylabel('RAAN (deg)');
 ylim([0,360]);
 title (strcat('Right Ascension of Ascending Node (RAAN) vs Time, ' , titleText))
 
-ArgPerigree = table2array(FinalTemp(:,6));
+ArgPerigee = table2array(FinalTemp(:,6));
 figure(4)
-plot(t1,ArgPerigree,'red','linewidth',2 )
+plot(t1,ArgPerigee,'red','linewidth',2 )
 ylim([0,360]);
-xlabel('Time (s)');
-ylabel('Argument of Perigree');
+xlabel('Time (min)');
+ylabel('Argument of Perigree (deg)');
 title (strcat('Argument of Perigee vs Time, ' , titleText))
 
 TrueAnomaly = table2array(FinalTemp(:,7));
 figure(5)
 plot(t1,TrueAnomaly,'red','linewidth',2 )
 ylim([0,360]); 
-xlabel('Time (s)');
-ylabel('True Anomaly');
+xlabel('Time (min)');
+ylabel('True Anomaly (deg)');
 title (strcat('True Anomaly vs Time, ' , titleText))
 
