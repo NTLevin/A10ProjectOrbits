@@ -1,6 +1,6 @@
-dataSet1 = dataone
-dataSet2 = datatwo
-dataSet3 = datathree
+dataSet1 = dataone;
+dataSet2 = datatwo;
+dataSet3 = datathreee;
 
 data = table2array(dataone);
 F = table2array(statetransitionmatrix);
@@ -21,7 +21,7 @@ K_1 = P_1_0*(P_1_0+R)^-1;
 x_1_1 = x_1_0 + K_1*(data(:,2)-x_1_0);
 P_1_1 = (eye(3)-K_1)*P_1_0*rot90((eye(3)-K_1))+K_1*R*rot90(K_1);
 
-datcorrected = []
+datcorrected = [];
 x_n_n = x_0_0;
 P_n_n = P_0_0;
 
