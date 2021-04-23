@@ -28,7 +28,6 @@ datacorrected = [];
 for i = 1:n
 %Prediction Matrix
 x_n1_n = F*x_n_n;
-x = x_n_n - x_0_0
 P_n1_n = F*P_n_n*rot90(F)+1;
 %Kalman Gain
 K_n1 = P_n1_n*(P_n1_n+R)^(-1);
