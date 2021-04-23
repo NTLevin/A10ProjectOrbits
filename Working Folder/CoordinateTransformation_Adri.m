@@ -1,8 +1,8 @@
-A = Moniya; %name of input table
+A = J2pertub; %name of input table
 
-titleText = ' Molniya Orbit';
-% titleText = ' J2 Perturbation';
-% titleText = ' Drag Perturbation';
+% titleText = ' Molniya Orbit';
+titleText = ' J2 Perturbation';
+% titleText = 'Drag Perturbation';
 % Uncomment correct title
     
 
@@ -202,7 +202,7 @@ TrueAnomaly = table2array(FinalTemp(:,7));
 figure(6)
 plot(t1,TrueAnomaly,'red','linewidth',2 )
 ylim([0,360]); 
-xlabel('Time (s)');
-ylabel('True Anomaly');
+xlabel('Time (min)');
+ylabel('True Anomaly (deg)');
 title (strcat('True Anomaly vs Time, ' , titleText))
 
