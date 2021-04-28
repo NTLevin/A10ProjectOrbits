@@ -10,16 +10,6 @@ n = width(data);
 Q = [100 0 0;0 100 0;0 0 100];
 R = Q;
 
-%Prediction Matrix
-x_1_0 = F*x_0_0;
-P_1_0 = F*P_0_0*rot90(F)+Q;
-%Kalman Gain
-K_1 = P_1_0*(P_1_0+R)^-1;
-%Update Matrix
-x_1_1 = x_1_0 + K_1*(data(:,2)-x_1_0);
-P_1_1 = (eye(3)-K_1)*P_1_0*rot90((eye(3)-K_1))+K_1*R*rot90(K_1);
-
-datcorrected = [];
 x_n_n = x_0_0;
 P_n_n = P_0_0;
 
@@ -34,6 +24,11 @@ K_n1 = P_n1_n*(P_n1_n+R)^(-1);
 %Update Matrix
 x_n1_n1 = x_n1_n + K_n1*(data(:,(n))-x_n1_n);
 P_n1_n1 = (eye(3)- K_n1)*P_n1_n*rot90(eye(3)-K_n1)+K_n1*R*rot90(K_n1);
+x_n_n = x_n1_n1;
+P_n_n = P_n1_n1;
+if i == 1
+    x_n1_n1 = x_0_0;  
+end 
 datacorrected = [datacorrected, x_n1_n1];
 end
 
@@ -43,11 +38,30 @@ for j = 1:n
 time = [time timestep*j];
 end
 
-%X1 = datacorrected(1,:);
-%X2 = data(1,:);
-%figure(1)
-%plot(time, X1 ,'red','linewidth',2 )
-%hold all
-%plot(time, X2 ,'green','linewidth',2 )
-%xlabel('Time (sec)');
-%ylabel('X');
+X1 = datacorrected(1,:);
+X2 = data(1,:);
+figure(1)
+plot(time, X1 ,'green','linewidth',2 )
+hold all
+plot(time, X2 ,'red','linewidth',2 )
+xlabel('Time (sec)');
+ylabel('X');
+
+Y1 = datacorrected(2,:);
+Y2 = data(2,:);
+figure(2)
+plot(time, Y1 ,'green','linewidth',2 )
+hold all
+plot(time, Y2 ,'red','linewidth',2 )
+xlabel('Time (sec)');
+ylabel('Y');
+
+
+Z1 = datacorrected(3,:);
+Z2 = data(3,:);
+figure(3)
+plot(time, Z1 ,'green','linewidth',2 )
+hold all
+plot(time, Z2 ,'red','linewidth',2 )
+xlabel('Time (sec)');
+ylabel('Z');
