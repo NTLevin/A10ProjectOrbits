@@ -110,12 +110,12 @@ X3 = DATA_three(1,:);
 figure(1)
 plot(time, X3 ,'red','linewidth',2 )
 hold all
-plot(time, X2 ,'-^y','linewidth',2,'MarkerIndices',1:600:length(X2))
+plot(time, X2 ,'-^g','linewidth',2,'MarkerIndices',1:600:length(X2))
 plot(time, X1 ,'-sb','linewidth',2,'MarkerIndices',1:600:length(X1))
 xlabel('Time (sec)');
 ylabel('J200 X coordinate (km)');
 hold off
-legend({'Sensor Data','KF Prediction','True Orbit'},'Location','northwest','Orientation','horizontal')
+legend({'Sensor Data','True Orbit','KF Prediction'},'Location','northwest','Orientation','horizontal')
 title('Orbital Plot of Sensor, True, and Filtered Data of X Axis')
 
 Y1 = dataKalman(2,:);
@@ -124,12 +124,12 @@ Y3 = DATA_three(2,:);
 figure(2)
 plot(time, Y3 ,'red','linewidth',2 )
 hold all
-plot(time, Y2 ,'-^y','linewidth',2,'MarkerIndices',1:600:length(Y2))
+plot(time, Y2 ,'-^g','linewidth',2,'MarkerIndices',1:600:length(Y2))
 plot(time, Y1 ,'-sb','linewidth',2,'MarkerIndices',1:600:length(Y1))
 xlabel('Time (sec)');
 ylabel('J200 Y coordinate (km)');
 hold off
-legend({'Sensor Data','KF Prediction','True Orbit'},'Location','northwest','Orientation','horizontal')
+legend({'Sensor Data','True Orbit','KF Prediction'},'Location','northwest','Orientation','horizontal')
 title('Orbital Plot of Sensor, True, and Filtered Data of Y Axis')
 
 Z1 = dataKalman(3,:);
@@ -138,10 +138,10 @@ Z3 = DATA_three(3,:);
 figure(3)
 plot(time, Z3,'red','linewidth',2);
 hold on
-plot(time, Z2 ,'-^y','linewidth',2,'MarkerIndices',1:600:length(Z2))
-plot(time, Z1 ,'-sb','linewidth',2,'MarkerIndices',1:600:length(Z1))
+plot(time, Z2 ,'-^g','linewidth',2,'MarkerIndices')
+plot(time, Z1 ,'-sb','linewidth',2,'MarkerIndices')
 xlabel('Time (sec)');
 ylabel('J2000 Z coordinate (km)');
 hold off
-legend({'Sensor Data','KF Prediction','True Orbit'},'Location','northwest','Orientation','horizontal')
+legend({'Sensor Data','True Orbit','KF Prediction'},'Location','northwest','Orientation','horizontal')
 title('Orbital Plot of Sensor, True, and Filtered Data of Z Axis')
