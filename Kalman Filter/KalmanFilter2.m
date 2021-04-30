@@ -101,3 +101,38 @@ plot(time, X_error_one ,'blue','linewidth',2 )
 xlabel('Time (sec)');
 ylabel('Error Kalman wrt. true data');
 hold off
+
+
+
+X1 = dataKalman(1,:);
+X2 = DATA_one(1,:);
+figure(1)
+plot(time, X1 ,'green','linewidth',2 )
+hold all
+plot(time, X2 ,'red','linewidth',2 )
+xlabel('Time (sec)');
+ylabel('J200 X coordinate (km)');
+hold off
+legend({'KF Prediction','True Orbit'},'Location','northwest','Orientation','horizontal')
+
+Y1 = dataKalman(2,:);
+Y2 = DATA_one(2,:);
+figure(2)
+plot(time, Y1 ,'green','linewidth',2 )
+hold all
+plot(time, Y2 ,'red','linewidth',2 )
+xlabel('Time (sec)');
+ylabel('J200 Y coordinate (km)');
+hold off
+legend({'KF Prediction','True Orbit'},'Location','northwest','Orientation','horizontal')
+
+Z1 = dataKalman(3,:);
+Z2 = DATA_one(3,:);
+figure(3)
+plot(time, Z1 ,'green','linewidth',2)
+hold on
+plot(time, Z2 ,'red','linewidth',2 )
+xlabel('Time (sec)');
+ylabel('J2000 Z coordinate (km)');
+hold off
+legend({'KF Prediction','True Orbit'},'Location','northwest','Orientation','horizontal')

@@ -18,12 +18,12 @@ datacorrected = [];
 for i = 1:n
 %Prediction Matrix
 x_n1_n = F*x_n_n;
-P_n1_n = F*P_n_n*rot90(F)+1;
+P_n1_n = F*P_n_n*transpose(F)+Q;
 %Kalman Gain
 K_n1 = P_n1_n*(P_n1_n+R)^(-1);
 %Update Matrix
 x_n1_n1 = x_n1_n + K_n1*(data(:,(n))-x_n1_n);
-P_n1_n1 = (eye(3)- K_n1)*P_n1_n*rot90(eye(3)-K_n1)+K_n1*R*rot90(K_n1);
+P_n1_n1 = (eye(3)- K_n1)*P_n1_n*transpose(eye(3)-K_n1)+K_n1*R*transpose(K_n1);
 x_n_n = x_n1_n1;
 P_n_n = P_n1_n1;
 if i == 1
