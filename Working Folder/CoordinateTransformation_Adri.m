@@ -1,8 +1,9 @@
 A = J2pertub; %name of input table
 
 % titleText = ' Molniya Orbit';
-titleText = ' J2 Perturbation';
-% titleText = 'Drag Perturbation';
+%titleText = ' J2 Perturbation';
+%titleText = 'Drag Perturbation'
+titleText = ''
 % Uncomment correct title
     
 
@@ -162,7 +163,7 @@ ylim([0,30000])
 plot(t1,SM1,'red','linewidth',2 )
 xlabel('Time (min)');
 ylabel('Semi-Major Axis');
-title (strcat('Semi-Major Axis vs Time,',titleText));
+%title (strcat('Semi-Major Axis vs Time,',titleText));
 
 E1 = table2array(FinalTemp(:,3));
 t1 = table2array((FinalTemp(:,1)));
@@ -171,7 +172,7 @@ ylim([0,1]);
 plot(t1,E1,'red','linewidth',2 )
 xlabel('Time (min)');
 ylabel('Eccentricity');
-title (strcat('Eccentricity vs Time, ' , titleText))
+%title (strcat('Eccentricity vs Time, ' , titleText))
 
 i = table2array(FinalTemp(:,4));
 figure(3)
@@ -179,7 +180,7 @@ ylim([0,180]);
 plot(t1,i,'red','linewidth',2 )
 xlabel('Time (min)');
 ylabel('Inclination');
-title (strcat('Inclination vs Time, ' , titleText))
+%title (strcat('Inclination vs Time, ' , titleText))
 
 RightAscension = table2array(FinalTemp(:,5));
 figure(4)
@@ -187,8 +188,7 @@ ylim([0,360]);
 plot(t1,RightAscension,'red','linewidth',2 )
 xlabel('Time (min)');
 ylabel('RAAN');
-
-title (strcat('Right Ascension of Ascending Node (RAAN) vs Time, ' , titleText))
+%title (strcat('Right Ascension of Ascending Node (RAAN) vs Time, ' , titleText))
 
 ArgPerigree = table2array(FinalTemp(:,6));
 figure(5)
@@ -196,7 +196,7 @@ plot(t1,ArgPerigree,'red','linewidth',2 )
 ylim([0,360]);
 xlabel('Time (min)');
 ylabel('Argument of Perigree');
-title (strcat('Argument of Perigee vs Time, ' , titleText))
+%title (strcat('Argument of Perigee vs Time, ' , titleText))
 
 TrueAnomaly = table2array(FinalTemp(:,7));
 figure(6)
@@ -204,5 +204,5 @@ plot(t1,TrueAnomaly,'red','linewidth',2 )
 ylim([0,360]); 
 xlabel('Time (min)');
 ylabel('True Anomaly (deg)');
-title (strcat('True Anomaly vs Time, ' , titleText))
+%title (strcat('True Anomaly vs Time, ' , titleText))
 
